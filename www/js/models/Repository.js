@@ -1,5 +1,9 @@
 var Repository = Backbone.Model.extend({
-	defaults: [
+	defaults: {
 		"Name": ""
-	]
+	},
+
+	initialize: function() {
+		
+	}
 });

@@ -243,7 +243,7 @@
 		callHttpApi : function (apiParams) {
 			apiParams.url = Gh3.Helper.protocol + "://" + Gh3.Helper.domain + "/" + apiParams.service;
 			if ($.support.cors) {
-				apiParams.headers = { Origin: location.host }
+				apiParams.headers = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept" }
 				var success = apiParams.success
 				if ($.isFunction(success)) {
 					apiParams.success = function (data, textStatus, jqXHR) {
@@ -785,7 +785,8 @@
 					if (callback) callback(null, that);
 				},
 				error : function (res) {
-					if (callback) callback(new Error(res));
+					console.log(res);
+					//if (callback) callback(new Error(res));
 				}
 			});
 
