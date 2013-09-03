@@ -14,7 +14,7 @@ var User = Backbone.Model.extend({
 		new UserInfoView({model: This});
 
 		// get user data
-		var gitHubUser = getJSONApiResult({ service: "users/" + AppData.currentUserNick }, function(data) {
+		getJSONApiResult({ service: "users/" + AppData.currentUserNick }, function(data) {
 			This.set({
 				Name: data.name,
 				AvatarUrl: data.avatar_url,

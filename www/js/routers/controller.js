@@ -10,10 +10,16 @@ var Controller = Backbone.Router.extend({
         AppData.currentUserNick = userName;
         AppData.currentUser = new User();
         AppData.repos = new Repositories();
+        AppData.currentRepo = new Repository();
     },
 
-    getRepoData: function() {
-        console.log('getRepoData');
+    getRepoData: function(userName, repoName) {
+        AppData.currentUserNick = userName;
+        AppData.currentUser = new User();
+        AppData.repos = new Repositories();
+        AppData.currentRepo = new Repository();
+        AppData.currentRepoName = repoName;
+        AppData.commits = new Commits();
     },
 
     start: function () {

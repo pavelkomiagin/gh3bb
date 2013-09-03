@@ -5,14 +5,15 @@ var Repositories = Backbone.Collection.extend({
 		var This = this;
 
 		// get repos
-		var repos = getJSONApiResult({service: "users/" + AppData.currentUserNick + "/repos"}, function(data) {
+		getJSONApiResult({service: "users/" + AppData.currentUserNick + "/repos"}, function(data) {
 			for(var i = 0; i < data.length; i++) {
 				var repo = new Repository({
 					"Name": data[i].name,
 					"Url": data[i].html_url,
 					"Description": data[i].description,
 					"FullName": data[i].full_name,
-					"OwnerName": This.get("OwnerName")
+					"OwnerName": This.get("OwnerName"),
+					"NeedLoadData": false
 				});
 				This.add(repo);
 			}
@@ -28,10 +29,18 @@ var Repository = Backbone.Model.extend({
 		"Url": "",
 		"Description": "",
 		"FullName": "",
-		"OwnerName": ""
+		"OwnerName": "",
+		"NeedLoadData": true
 	},
 
 	initialize: function() {
 		var This = this;
+		if(this.get("NeedLoadData")) {
+			getJSONApiResult({service: "repos/" + AppData.currentUserNick + "/lineq"}, function(data) {
+				//new CommitsView({model: This});
+				This.trigger("change");
+			});
+		}
+		
 	}
 });

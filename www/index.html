@@ -9,8 +9,10 @@
 		<script type="text/javascript" src="js/utils.js"></script>
 		<script type="text/javascript" src="js/models/user.js"></script>
 		<script type="text/javascript" src="js/models/repository.js"></script>
+		<script type="text/javascript" src="js/models/commit.js"></script>
 		<script type="text/javascript" src="js/views/userinfoview.js"></script>
 		<script type="text/javascript" src="js/views/repositoriesview.js"></script>
+		<script type="text/javascript" src="js/views/commitsview.js"></script>
 		<script type="text/javascript" src="js/routers/controller.js"></script>
 		<link href="css/main.css" media="all" rel="stylesheet" type="text/css">
 		<link href="css/main2.css" media="all" rel="stylesheet" type="text/css">
@@ -27,44 +29,94 @@
 		  	</div>
 		</div>
         <div class="site clearfix">
-			<div id="site-container" class="context-loader-container" data-pjax-container="">
-				<div class="container">
-		  			<div class="columns profilecols js-username" data-name="aristokrat">
-				    	<div class="first vcard" style="float: left; width: 220px;">
-				    		<div class="avatared">
-					            <span><img id="userAvatar" height="210" src="" width="210"></span>
+        	<div id="userInfoPage">
+        		<div id="site-container" class="context-loader-container" data-pjax-container="">
+					<div class="container">
+			  			<div class="columns profilecols js-username" data-name="aristokrat">
+					    	<div class="first vcard" style="float: left; width: 220px;">
+					    		<div class="avatared">
+						            <span><img id="userAvatar" height="210" src="" width="210"></span>
 
-					            <h1>
-					                <span id="userName" style="font-size: 24px;"></span><br>
-					                <span id="userNick" style="color: gray; font-size: 18px;"></span>
-					            </h1>
+						            <h1>
+						                <span id="userName" style="font-size: 24px;"></span><br>
+						                <span id="userNick" style="color: gray; font-size: 18px;"></span>
+						            </h1>
 
-					            <div class="details">
-					              <dl><dt></dt><dd><span class="join-label">Joined on </span><span class="join-date"></span></dd></dl>
-					            </div>
-				        	</div>
-  						</div>
-  						<div class="last">
-  							<!-- POPULAR REPOSITORIES -->
-							<div class="grid popular-repos">
-							    <div class="col single-column">
-							   		<div class="box box-small">
-							        	<div class="box-header">
-							          		<h3 class="box-title">Repositories</h3>
-							        	</div>
-							        	<div class="box-body">
-							         		<ul class="repo-list">
-							          		</ul>
-							        	</div>
-							      	</div>
-							    </div>
-							</div>
-							<!-- /POPULAR REPOSITORIES -->
-  						</div>
-  					</div>
-  				</div>
-  			</div>
+						            <div class="details">
+						              <dl><dt></dt><dd><span class="join-label">Joined on </span><span class="join-date"></span></dd></dl>
+						            </div>
+					        	</div>
+	  						</div>
+	  						<div class="last">
+	  							<!-- POPULAR REPOSITORIES -->
+								<div class="grid popular-repos">
+								    <div class="col single-column">
+								   		<div class="box box-small">
+								        	<div class="box-header">
+								          		<h3 class="box-title">Repositories</h3>
+								        	</div>
+								        	<div class="box-body">
+								         		<ul class="repo-list"></ul>
+								        	</div>
+								      	</div>
+								    </div>
+								</div>
+								<!-- /POPULAR REPOSITORIES -->
+	  						</div>
+	  					</div>
+	  					<div id="repoCommitsBlock" style="float: left; width: 980px;"></div>
+	  				</div>
+	  			</div>
+        	</div>
 		</div>
+		
+		<div id="repoCommitTpl" style="display: none;">
+	    	<h3 class="commit-group-heading">Aug 18, 2013</h3>
+			<ol class="commit-group">
+	        	<li class="commit commit-group-item">
+		            <img class="gravatar" height="36" src="" width="36">
+		            <p class="commit-title">
+		            	<a href="/aristokrat/lineq/commit/09994c31d96415c1fe3cb5edbce72a13aa677712" class="message" title=""></a>
+		            </p>
+		            <div class="commit-meta">
+		            	<div class="commit-links">
+			                <a href="/aristokrat/lineq/commit/09994c31d96415c1fe3cb5edbce72a13aa677712" class="gobutton ">
+			                	<span class="sha">09994c31d9</span>
+			                </a>
+		              	</div>
+
+		              	<div class="authorship">
+		                	<span class="author-name"><a href="/aristokrat" rel="author">aristokrat</a></span>
+		                	authored <time>16 days ago</time>
+		              	</div>
+		            </div>
+	          	</li>
+	      	</ol>
+		</div>
+
+		<!-- <div id="repoCommitTpl">
+	    	<h3 class="commit-group-heading">Aug 18, 2013</h3>
+			<ol class="commit-group">
+	        	<li class="commit commit-group-item">
+		            <img class="gravatar" height="36" src="" width="36">
+		            <p class="commit-title">
+		            	<a href="/aristokrat/lineq/commit/09994c31d96415c1fe3cb5edbce72a13aa677712" class="message" title="">Write equations direct to textarea</a>
+		            </p>
+		            <div class="commit-meta">
+		            	<div class="commit-links">
+			                <a href="/aristokrat/lineq/commit/09994c31d96415c1fe3cb5edbce72a13aa677712" class="gobutton ">
+			                	<span class="sha">09994c31d9</span>
+			                </a>
+		              	</div>
+
+		              	<div class="authorship">
+		                	<span class="author-name"><a href="/aristokrat" rel="author">aristokrat</a></span>
+		                	authored <time>16 days ago</time>
+		              	</div>
+		            </div>
+	          	</li>
+	      	</ol>
+		</div> -->
 
 		<div id="repoTpl" style="display: none;">
 			<li class="public source">
