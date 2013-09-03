@@ -9,7 +9,7 @@ var User = Backbone.Model.extend({
 
 	initialize: function() {
 		var This = this;
-		new UserInfo({model: This});
+		new UserInfoView({model: This});
 
 		// get user data
 		var gitHubUser = getJSONApiResult({service: "users/Aristokrat"}, function(data) {
