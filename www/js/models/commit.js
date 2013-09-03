@@ -10,6 +10,8 @@ var Commits = Backbone.Collection.extend({
 				var commit = new Commit({
 					"Message": data[i].commit.message,
 					"AuthorAvatarUrl": data[i].author.avatar_url,
+					"AuthorName": data[i].author.login,
+					"Date": new Date(data[i].commit.author.date),
 					"NeedLoadData": false
 				});
 				This.add(commit);
@@ -24,6 +26,8 @@ var Commit = Backbone.Model.extend({
 	defaults: {
 		"Message": "",
 		"AuthorAvatarUrl": "",
+		"AuthorName": "",
+		"Date": new Date(),
 		"NeedLoadData": true
 	},
 

@@ -9,7 +9,7 @@ var RepositoriesView = Backbone.View.extend({
 			var tpl = $($('#repoTpl').html());
 			tpl.find('.repo').html(repo.get("Name"));
 			tpl.find('.repo-description').html(repo.get("Description"));
-			tpl.find('.repo-list-item').attr("href", repo.get("FullName"));
+			tpl.find('.repo-list-item').attr("href", "#/user/" + repo.get("FullName"));
 			$('.repo-list').append(tpl);
 		});
 	}
