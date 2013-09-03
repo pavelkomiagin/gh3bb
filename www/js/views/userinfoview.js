@@ -7,7 +7,8 @@ var UserInfoView = Backbone.View.extend({
 		var user = this.model;
 
 		$('#userName').html(user.get('Name'));
-		$('#userAvatar').attr("src", user.get('AvatarUrl'));
+		$('#userNick').html(user.get('Nick'));
+		$('#userAvatar').attr("src", user.get('AvatarUrl') + "&s=210");
 		$('#userEmail').html(user.get('Email'));
 		$('#reposCount').html(user.get('ReposCount'));
 	}

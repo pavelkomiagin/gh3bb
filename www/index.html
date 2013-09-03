@@ -8,10 +8,12 @@
 		<script type="text/javascript" src="js/models/repository.js"></script>
 		<script type="text/javascript" src="js/views/userinfoview.js"></script>
 		<script type="text/javascript" src="js/views/repositoriesview.js"></script>
+		<link href="css/main.css" media="all" rel="stylesheet" type="text/css">
+		<link href="css/main2.css" media="all" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="js/index.js"></script>
 	</head>
 	<body>
-		Hello, <span id="userName"></span>!
+		<!-- Hello, <span id="userName"></span>!
 		<div id="userInfo">
 			<img id="userAvatar" />
 			<span id="userEmail"></span><br />
@@ -19,6 +21,77 @@
 			<div id="reposList">
 				
 			</div>
+		</div> -->
+
+	    <div class="wrapper">
+	        <div class="header header-logged-in">
+		  		<div class="container clearfix">
+			        <ul class="top-nav">
+			          <li class="explore"><a href="/explore">Explore</a></li>
+			            <li><a href="https://gist.github.com">Gist</a></li>
+			            <li><a href="/blog">Blog</a></li>
+			          <li><a href="https://help.github.com">Help</a></li>
+			        </ul>
+			    </div>
+		  	</div>
 		</div>
-	</body>
+        <div class="site clearfix">
+			<div id="site-container" class="context-loader-container" data-pjax-container="">
+				<div class="container">
+		  			<div class="columns profilecols js-username" data-name="aristokrat">
+				    	<div class="first vcard" style="float: left; width: 220px;">
+				    		<div class="avatared">
+					            <span><img id="userAvatar" height="210" src="" width="210"></span>
+
+					            <h1>
+					                <span id="userName" style="font-size: 24px;"></span><br>
+					                <span id="userNick" style="color: gray; font-size: 18px;"></span>
+					            </h1>
+
+					            <div class="details">
+					              <dl>
+					                <dt></dt><dd>JavaScript, C#, CSS</dd>
+					              </dl>
+					              <dl><dt></dt><dd><span class="join-label">Joined on </span><span class="join-date">May 16, 2011</span></dd></dl>
+					            </div>
+				        	</div>
+  						</div>
+  						<div class="last">
+  							<!-- POPULAR REPOSITORIES -->
+							<div class="grid popular-repos">
+							    <div class="col single-column">
+							   		<div class="box box-small">
+							        	<div class="box-header">
+							          		<h3 class="box-title">Your repositories</h3>
+							        	</div>
+							        	<div class="box-body">
+							         		<ul class="repo-list">
+												<li class="public source">
+												    <a href="/aristokrat/lineq" class="repo-list-item css-truncate">
+												      	<span class="repo-and-owner css-truncate-target">
+															<span class="repo" title="lineq">lineq</span>
+												      	</span>
+												      	<span class="repo-description css-truncate-target">ASP.NET MVC 4 single-page application for solve systems of linear equations.</span>
+												    </a>
+												</li>
+												<li class="public source">
+												    <a href="/aristokrat/gh3bb" class="repo-list-item css-truncate">
+												      	<span class="repo-and-owner css-truncate-target">
+															<span class="repo" title="gh3bb">gh3bb</span>
+												      	</span>
+												     	<span class="repo-description css-truncate-target">BackBone client for GitHub</span>
+												    </a>
+												</li>
+							          		</ul>
+							        	</div>
+							      	</div>
+							    </div>
+							</div>
+							<!-- /POPULAR REPOSITORIES -->
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+		</div>
+  	</body>
 </html>

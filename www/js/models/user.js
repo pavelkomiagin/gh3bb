@@ -4,7 +4,8 @@ var User = Backbone.Model.extend({
 		"AvatarUrl": "",
 		"Url": "",
 		"Email": "",
-		"ReposCount": 0
+		"ReposCount": 0,
+		"Nick": ""
 	},
 
 	initialize: function() {
@@ -14,7 +15,8 @@ var User = Backbone.Model.extend({
 		// get user data
 		var gitHubUser = getJSONApiResult({service: "users/Aristokrat"}, function(data) {
 			This.set({
-				Name: data.login,
+				Name: data.name,
+				Nick: data.login,
 				AvatarUrl: data.avatar_url,
 				Url: data.html_url,
 				Email: data.email,
