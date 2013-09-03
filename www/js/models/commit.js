@@ -12,6 +12,7 @@ var Commits = Backbone.Collection.extend({
 					"AuthorAvatarUrl": data[i].author.avatar_url,
 					"AuthorName": data[i].author.login,
 					"Date": new Date(data[i].commit.author.date),
+					"Sha": data[i].sha,
 					"NeedLoadData": false
 				});
 				This.add(commit);
@@ -33,12 +34,16 @@ var Commit = Backbone.Model.extend({
 
 	initialize: function() {
 		var This = this;
-		/*if(this.get("NeedLoadData")) {
-			getJSONApiResult({service: "repos/" + AppData.currentUserNick + "/lineq"}, function(data) {
-				new RepositoryView({model: This});
+		if(this.get("NeedLoadData")) {
+			getJSONApiResult({service: "repos/" + AppData.currentUserNick + "/" + AppData.currentRepoName + "/commits/" + AppData.currentCommitSha}, function(data) {
+				This.set({
+					"Files": data.files
+				});
+
+				new CommitView({model: This});
 				This.trigger("change");
 			});
-		}*/
+		}
 		
 	}
 });

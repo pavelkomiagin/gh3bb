@@ -20,7 +20,7 @@ var CommitsView = Backbone.View.extend({
 
 			if(isAnotherDate) {
 				lastDate = commit.get("Date");
-				tpl.find('.message').html(commit.get("Message"));
+				tpl.find('.message').html(commit.get("Message")).attr("href", "#/repos/" + AppData.currentUserNick + "/" + AppData.currentRepoName + "/commits/" + commit.get("Sha"));
 				tpl.find('.gravatar').attr("src", commit.get("AuthorAvatarUrl"));
 				tpl.find('.author-name a').attr("href", "#/users/" + commit.get("AuthorName")).html(commit.get("AuthorName"));
 				tpl.find('.commit-group-heading').html(commit.get("Date").toDateString());
@@ -28,14 +28,12 @@ var CommitsView = Backbone.View.extend({
 			}
 			else {
 				var thisDateCommitTpl = $(tpl.find('.commit-group').html());
-				thisDateCommitTpl.find('.message').html(commit.get("Message"));
+				thisDateCommitTpl.find('.message').html(commit.get("Message")).attr("href", "#/repos/" + AppData.currentUserNick + "/" + AppData.currentRepoName + "/commits/" + commit.get("Sha"));
 				thisDateCommitTpl.find('.gravatar').attr("src", commit.get("AuthorAvatarUrl"));
 				thisDateCommitTpl.find('.author-name a').attr("href", "#/users/" + commit.get("AuthorName")).html(commit.get("AuthorName"));
 				thisDateCommitTpl.find('.commit-group-heading').html(commit.get("Date").toDateString());
 				$('#repoCommitsBlock li:last').after(thisDateCommitTpl);
 			}
-
-			
 		});
 	}
 });
