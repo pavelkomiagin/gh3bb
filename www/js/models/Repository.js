@@ -9,7 +9,8 @@ var Repositories = Backbone.Collection.extend({
 			for(var i = 0; i < data.length; i++) {
 				var repo = new Repository({
 					"Name": data[i].name,
-					"Url": data[i].html_url
+					"Url": data[i].html_url,
+					"Description": data[i].description
 				});
 				This.add(repo);
 			}
@@ -20,13 +21,11 @@ var Repositories = Backbone.Collection.extend({
 	}
 });
 
-var a = new Repositories();
-
-
 var Repository = Backbone.Model.extend({
 	defaults: {
 		"Name": "",
-		"Url": ""
+		"Url": "",
+		"Description": ""
 	},
 
 	initialize: function() {

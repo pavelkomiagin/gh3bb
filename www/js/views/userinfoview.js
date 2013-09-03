@@ -11,5 +11,6 @@ var UserInfoView = Backbone.View.extend({
 		$('#userAvatar').attr("src", user.get('AvatarUrl') + "&s=210");
 		$('#userEmail').html(user.get('Email'));
 		$('#reposCount').html(user.get('ReposCount'));
+		$('.join-date').html(user.get("Joined"));
 	}
 });

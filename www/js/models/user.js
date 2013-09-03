@@ -5,7 +5,8 @@ var User = Backbone.Model.extend({
 		"Url": "",
 		"Email": "",
 		"ReposCount": 0,
-		"Nick": ""
+		"Nick": "",
+		"Joined": new Date()
 	},
 
 	initialize: function() {
@@ -20,7 +21,8 @@ var User = Backbone.Model.extend({
 				AvatarUrl: data.avatar_url,
 				Url: data.html_url,
 				Email: data.email,
-				ReposCount: data.public_repos
+				ReposCount: data.public_repos,
+				Joined: new Date(data.created_at)
 			});
 		});
 	},
