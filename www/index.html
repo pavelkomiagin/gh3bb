@@ -1,4 +1,7 @@
 <html>
+	<script type="text/javascript">
+		window.AppData = {}
+	</script>
 	<head>
 		<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
 		<script type="text/javascript" src="js/underscore.js"></script>
@@ -8,6 +11,7 @@
 		<script type="text/javascript" src="js/models/repository.js"></script>
 		<script type="text/javascript" src="js/views/userinfoview.js"></script>
 		<script type="text/javascript" src="js/views/repositoriesview.js"></script>
+		<script type="text/javascript" src="js/routers/controller.js"></script>
 		<link href="css/main.css" media="all" rel="stylesheet" type="text/css">
 		<link href="css/main2.css" media="all" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="js/index.js"></script>
@@ -17,10 +21,7 @@
 	        <div class="header header-logged-in">
 		  		<div class="container clearfix">
 			        <ul class="top-nav">
-			          <li class="explore"><a href="/explore">Explore</a></li>
-			            <li><a href="https://gist.github.com">Gist</a></li>
-			            <li><a href="/blog">Blog</a></li>
-			          <li><a href="https://help.github.com">Help</a></li>
+		            	<li><a href="https://github.com">GitHub</a></li>
 			        </ul>
 			    </div>
 		  	</div>
@@ -39,9 +40,6 @@
 					            </h1>
 
 					            <div class="details">
-					              <dl>
-					                <dt></dt><dd>JavaScript, C#, CSS</dd>
-					              </dl>
 					              <dl><dt></dt><dd><span class="join-label">Joined on </span><span class="join-date"></span></dd></dl>
 					            </div>
 				        	</div>
@@ -52,26 +50,10 @@
 							    <div class="col single-column">
 							   		<div class="box box-small">
 							        	<div class="box-header">
-							          		<h3 class="box-title">Your repositories</h3>
+							          		<h3 class="box-title">Repositories</h3>
 							        	</div>
 							        	<div class="box-body">
 							         		<ul class="repo-list">
-												<!-- <li class="public source">
-												    <a href="/aristokrat/lineq" class="repo-list-item css-truncate">
-												      	<span class="repo-and-owner css-truncate-target">
-															<span class="repo" title="lineq">lineq</span>
-												      	</span>
-												      	<span class="repo-description css-truncate-target">ASP.NET MVC 4 single-page application for solve systems of linear equations.</span>
-												    </a>
-												</li>
-												<li class="public source">
-												    <a href="/aristokrat/gh3bb" class="repo-list-item css-truncate">
-												      	<span class="repo-and-owner css-truncate-target">
-															<span class="repo" title="gh3bb">gh3bb</span>
-												      	</span>
-												     	<span class="repo-description css-truncate-target">BackBone client for GitHub</span>
-												    </a>
-												</li> -->
 							          		</ul>
 							        	</div>
 							      	</div>
@@ -86,7 +68,7 @@
 
 		<div id="repoTpl" style="display: none;">
 			<li class="public source">
-			    <a href="/aristokrat/lineq" class="repo-list-item css-truncate">
+			    <a href="" class="repo-list-item css-truncate">
 			      	<span class="repo-and-owner css-truncate-target">
 						<span class="repo" title=""></span>
 			      	</span>

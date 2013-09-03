@@ -9,15 +9,14 @@ var User = Backbone.Model.extend({
 		"Joined": new Date()
 	},
 
-	initialize: function() {
+	initialize: function(params) {
 		var This = this;
 		new UserInfoView({model: This});
 
 		// get user data
-		var gitHubUser = getJSONApiResult({service: "users/Aristokrat"}, function(data) {
+		var gitHubUser = getJSONApiResult({ service: "users/" + AppData.currentUserNick }, function(data) {
 			This.set({
 				Name: data.name,
-				Nick: data.login,
 				AvatarUrl: data.avatar_url,
 				Url: data.html_url,
 				Email: data.email,
