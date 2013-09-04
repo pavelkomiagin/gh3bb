@@ -13,6 +13,7 @@ var Controller = Backbone.Router.extend({
         AppData.currentUser = new User();
         AppData.repos = new Repositories();
         $('#repoCommitsBlock').html('');
+        $('#commitInfoBlock').html('');
     },
 
     getRepoData: function(userName, repoName) {
@@ -21,6 +22,7 @@ var Controller = Backbone.Router.extend({
         AppData.currentUser = new User();
         AppData.repos = new Repositories();
         AppData.commits = new Commits();
+        $('#commitInfoBlock').html('');
     },
 
     getCommitData: function(userName, repoName, sha) {
@@ -31,6 +33,7 @@ var Controller = Backbone.Router.extend({
         AppData.repos = new Repositories();
         AppData.commit = new Commit({ "NeedLoadData": true });
         $('#repoCommitsBlock').html('');
+        $('#commitInfoBlock').html('');
     },
 
     start: function () {

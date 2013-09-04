@@ -37,6 +37,7 @@ var Commit = Backbone.Model.extend({
 		if(this.get("NeedLoadData")) {
 			getJSONApiResult({service: "repos/" + AppData.currentUserNick + "/" + AppData.currentRepoName + "/commits/" + AppData.currentCommitSha}, function(data) {
 				This.set({
+					"Message": data.commit.message,
 					"Files": data.files
 				});
 

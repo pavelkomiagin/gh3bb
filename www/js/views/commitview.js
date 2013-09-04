@@ -4,14 +4,14 @@ var CommitView = Backbone.View.extend({
 	},
 
 	render: function() {
-		$('#commitInfoBlock div').html('');
+		$('#commitInfoBlock').html("<h2>Commit '" + this.model.get("Message") + "' in repository '" + AppData.currentRepoName + "'</h2>");
 
 		var files = this.model.get("Files");
 				
 		for(var i = 0; i < files.length; i++) {
 			var txt = this.escapeSymbols(files[i].patch);
 			var diffTable = this.biuldDiffTable(files[i].filename, txt);
-			$('#commitInfoBlock div').append(diffTable);
+			$('#commitInfoBlock').append(diffTable);
 		}
 	},
 
@@ -31,8 +31,7 @@ var CommitView = Backbone.View.extend({
 	},
 
 	biuldDiffTable: function(caption, text) {
-		var res = "<h2>Commit '" + this.model.get("Message") + "' in repository '" + AppData.currentRepoName + "'</h2>";
-		res += "<div style='border: 1px solid #ccc;'><table width='100%'><tr><th>" + caption + "</th></tr>";
+		var res = "<div style='border: 1px solid #ccc; max-width: 980px; overflow-x: scroll;'><table width='100%'><tr><th align='left' style='border-bottom: 1px solid #ccc; padding: 5px 0 5px 20px; background-color: #EAEAEA;'>" + caption + "</th></tr>";
 		var parts = text.split("\n");
 
 		for(var i = 0; i < parts.length-1; i++) {
