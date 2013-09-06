@@ -72,32 +72,6 @@
             </div>
 		</script>
 
-		<div id="repoCommitTpl" style="display: none;">
-			<div>
-		    	<h3 class="commit-group-heading"></h3>
-				<ol class="commit-group">
-		        	<li class="commit commit-group-item">
-			            <img class="gravatar" height="36" src="" width="36">
-			            <p class="commit-title">
-			            	<a href="" class="message" title=""></a>
-			            </p>
-			            <div class="commit-meta">
-			            	<div class="commit-links">
-				                <a href="" class="gobutton ">
-				                	<span class="sha">09994c31d9</span>
-				                </a>
-			              	</div>
-
-			              	<div class="authorship">
-			                	<span class="author-name"><a href="" rel="author"></a></span>
-			                	authored
-			              	</div>
-			            </div>
-		          	</li>
-		      	</ol>
-		    </div>
-		</div>
-
 		<script type="text/template" id="repoTpl">
 			{{ #repos }}
 			<li class="public source">
@@ -109,6 +83,28 @@
 			    </a>
 			</li>
 			{{ /repos }}
+		</script>
+
+		<script type="text/template" id="repoCommitTpl">
+			{{ #commits }}
+			<div>
+		    	<h3 class="commit-group-heading">{{ #commit }}{{ author.date }}{{ /commit }}</h3>
+				<ol class="commit-group">
+		        	<li class="commit commit-group-item">
+			            <img class="gravatar" height="36" src="{{ author.avatar_url }}&s=40" width="36">
+			            <p class="commit-title">
+			            	<a href="#/repos/{{ author.login }}/{{ repoName }}/commits/{{ sha }}" class="message" title="">{{ commit.message }}</a>
+			            </p>
+			            <div class="commit-meta">
+			              	<div class="authorship">
+			                	<span class="author-name"><a href="#/user/{{ author.login }}" rel="author">{{ author.login }}</a></span>
+			                	authored
+			              	</div>
+			            </div>
+		          	</li>
+		      	</ol>
+		    </div>
+		    {{ /commits }}
 		</script>
   	</body>
 </html>

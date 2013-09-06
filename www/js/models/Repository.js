@@ -1,12 +1,5 @@
 var Repository = Backbone.Model.extend({
-	initialize: function() {
-		/*var This = this;
-		if(this.get("NeedLoadData")) {
-			getJSONApiResult({service: "repos/" + AppData.currentUserNick + "/lineq"}, function(data) {
-				This.trigger("change");
-			});
-		}*/
-	}
+	initialize: function() {}
 });
 
 var Repositories = Backbone.Collection.extend({

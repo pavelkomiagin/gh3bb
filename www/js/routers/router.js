@@ -41,13 +41,28 @@ var Router = Backbone.Router.extend({
                console.log('There was some error in loading and processing the JSON response');
             }
         });
-        
-        /*AppData.currentUserNick = userName;
-        AppData.currentRepoName = repoName;
-        AppData.currentUser = new User();
-        AppData.repos = new Repositories();
-        AppData.commits = new Commits();
-        $('#commitInfoBlock').html('');*/
+
+        var repos = new Repositories({ nick: userName });
+        repos.fetch({
+            success: function() {
+                var view = new RepositoriesView({ model: repos });
+                view.render();
+            },
+            error: function() {
+                console.log('There was some error in loading and processing the JSON response');
+            }
+        });
+
+        var commits = new Commits({ nick: userName, repoName: repoName });
+        commits.fetch({
+            success: function() {
+                var view = new CommitsView({ model: commits });
+                view.render({ repoName: repoName });
+            },
+            error: function() {
+                console.log('There was some error in loading and processing the JSON response');
+            }
+        });
     },
 
     getCommitData: function(userName, repoName, sha) {
