@@ -14,6 +14,10 @@ var CommitView = Backbone.View.extend({
 	getFormattedFiles: function(files) {
 		var formattedFiles = [];
 		for(var i = 0; i < files.length; i++) {
+			if(files[i].patch === undefined) {
+				continue;
+			}
+
 			var rows = [];
 			var txt = files[i].patch;
 			var parts = txt.split("\n");

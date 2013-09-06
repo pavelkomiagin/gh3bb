@@ -11,9 +11,6 @@ var Router = Backbone.Router.extend({
             success: function() {
                 var view = new UserInfoView({ model: user });
                 view.render();
-            },
-            error: function(){
-               console.log('There was some error in loading and processing the JSON response');
             }
         });
                 
@@ -22,9 +19,6 @@ var Router = Backbone.Router.extend({
             success: function() {
                 var view = new RepositoriesView({ model: repos });
                 view.render();
-            },
-            error: function() {
-                console.log('There was some error in loading and processing the JSON response');
             }
         });
     },
@@ -35,9 +29,6 @@ var Router = Backbone.Router.extend({
             success: function() {
                 var view = new UserInfoView({ model: user });
                 view.render();
-            },
-            error: function(){
-               console.log('There was some error in loading and processing the JSON response');
             }
         });
 
@@ -46,9 +37,6 @@ var Router = Backbone.Router.extend({
             success: function() {
                 var view = new RepositoriesView({ model: repos });
                 view.render();
-            },
-            error: function() {
-                console.log('There was some error in loading and processing the JSON response');
             }
         });
 
@@ -57,9 +45,6 @@ var Router = Backbone.Router.extend({
             success: function() {
                 var view = new CommitsView({ model: commits });
                 view.render({ repoName: repoName });
-            },
-            error: function() {
-                console.log('There was some error in loading and processing the JSON response');
             }
         });
     },
@@ -70,9 +55,6 @@ var Router = Backbone.Router.extend({
             success: function() {
                 var view = new UserInfoView({ model: user });
                 view.render();
-            },
-            error: function(){
-               console.log('There was some error in loading and processing the JSON response');
             }
         });
 
@@ -81,9 +63,6 @@ var Router = Backbone.Router.extend({
             success: function() {
                 var view = new RepositoriesView({ model: repos });
                 view.render();
-            },
-            error: function() {
-                console.log('There was some error in loading and processing the JSON response');
             }
         });
 
@@ -92,14 +71,10 @@ var Router = Backbone.Router.extend({
             success: function() {
                 var view = new CommitView({ model: commit });
                 view.render({ repoName: repoName });
-            },
-            error: function() {
-                console.log('There was some error in loading and processing the JSON response');
             }
         });
     }
 });
 
 var router = new Router();
-
 Backbone.history.start();
