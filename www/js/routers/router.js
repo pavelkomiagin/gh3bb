@@ -31,7 +31,6 @@ var Router = Backbone.Router.extend({
 
     getRepoData: function(userName, repoName) {
         var user = new User({ nick: userName });
-
         user.fetch({
             success: function() {
                 var view = new UserInfoView({ model: user });
@@ -66,17 +65,41 @@ var Router = Backbone.Router.extend({
     },
 
     getCommitData: function(userName, repoName, sha) {
-        AppData.currentUserNick = userName;
-        AppData.currentRepoName = repoName;
-        AppData.currentCommitSha = sha;
-        AppData.currentUser = new User();
-        AppData.repos = new Repositories();
-        AppData.commit = new Commit({ "NeedLoadData": true });
-        $('#repoCommitsBlock').html('');
-        $('#commitInfoBlock').html('');
+        var user = new User({ nick: userName });
+        user.fetch({
+            success: function() {
+                var view = new UserInfoView({ model: user });
+                view.render();
+            },
+            error: function(){
+               console.log('There was some error in loading and processing the JSON response');
+            }
+        });
+
+        var repos = new Repositories({ nick: userName });
+        repos.fetch({
+            success: function() {
+                var view = new RepositoriesView({ model: repos });
+                view.render();
+            },
+            error: function() {
+                console.log('There was some error in loading and processing the JSON response');
+            }
+        });
+
+        var commit = new Commit({ nick: userName, repoName: repoName, sha: sha });
+        commit.fetch({
+            success: function() {
+                var view = new CommitView({ model: commit });
+                view.render({ repoName: repoName });
+            },
+            error: function() {
+                console.log('There was some error in loading and processing the JSON response');
+            }
+        });
     }
 });
 
 var router = new Router();
 
-Backbone.history.start();  // Запускаем HTML5 History push
+Backbone.history.start();

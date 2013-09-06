@@ -86,6 +86,7 @@
 		</script>
 
 		<script type="text/template" id="repoCommitTpl">
+			<h2>Commits in project '{{ repoName }}'</h2>
 			{{ #commits }}
 			<div>
 		    	<h3 class="commit-group-heading">{{ #commit }}{{ author.date }}{{ /commit }}</h3>
@@ -105,6 +106,24 @@
 		      	</ol>
 		    </div>
 		    {{ /commits }}
+		</script>
+
+		<script type="text/template" id="commitInfoTpl">
+			<h2>Commit '{{ commitMessage }}' in repository '{{ repoName }}'</h2>
+			{{ #files }}
+				<div style='border: 1px solid #ccc; max-width: 980px; overflow-x: scroll;'>
+					<table width='100%'>
+						<tr>
+							<th align='left' style='border-bottom: 1px solid #ccc; padding: 5px 0 5px 20px; background-color: #EAEAEA;'>{{ caption }}</th>
+						</tr>
+						{{ #rows }}
+							<tr class="{{ trClass }}">
+								<td class="{{ tdClass }}"><pre>{{ text }}</pre></td>
+							</tr>
+						{{ /rows }}
+					</table>
+				</div><br><br>
+			{{ /files }}
 		</script>
   	</body>
 </html>
